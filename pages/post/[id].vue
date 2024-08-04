@@ -2,7 +2,7 @@
 const { id } = useRoute().params
 const pocketbase = usePocketbase();
 
-const { data } = await useAsyncData("news", async () => {
+const { data } = await useAsyncData("post", async () => {
     const [post, posts] = await Promise.all([
         await pocketbase.collection("news").getOne(id as string),
         await pocketbase.collection("news").getFullList()
@@ -12,8 +12,8 @@ const { data } = await useAsyncData("news", async () => {
 </script>
 
 <template>
-    <div class="grid grid-cols-1 lg:grid-cols-[auto,24rem] gap-4">
-        <UContainer class="space-y-4 my-8">
+    <div class="grid grid-cols-1 lg:grid-cols-[auto,24rem] my-8 gap-4">
+        <UContainer class="space-y-4">
             <div class="flex items-center gap-2">
                 <div v-for="tag in data?.post.tags" class="flex items-center gap-2">
                     <UButton :label="tag" variant="soft" />

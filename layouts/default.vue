@@ -2,6 +2,7 @@
     <NuxtLoadingIndicator />
     <Header />
     <slot />
+    <Footer />
     <UNotifications />
 </template>
 
