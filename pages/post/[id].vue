@@ -5,7 +5,7 @@ const pocketbase = usePocketbase();
 const { data } = await useAsyncData("post", async () => {
     const [post, posts] = await Promise.all([
         await pocketbase.collection("news").getOne(id as string),
-        await pocketbase.collection("news").getFullList()
+        await pocketbase.collection("news").getFullList({ sort: "-created" })
     ])
     return { post, posts }
 });
