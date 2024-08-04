@@ -2,7 +2,7 @@
 const pocketbase = usePocketbase();
 
 const { data } = await useAsyncData("news", async () => {
-    return await pocketbase.collection("news").getFullList()
+    return await pocketbase.collection("news").getFullList({ sort: "-created" })
 });
 </script>
 
